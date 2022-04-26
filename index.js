@@ -10,7 +10,7 @@ const pokedex = [
   {
     id: 63,
     nome: "Abra",
-    tipo: "Tipo: Psychic",
+    tipo: "Psychic",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/063.png",
     descricao:
       "This Pokémon uses its psychic powers while it sleeps. The contents of Abra’s dreams affect the powers that the Pokémon wields.",
@@ -22,7 +22,7 @@ const pokedex = [
   {
     id: 64,
     nome: "Kadabra",
-    tipo: "Tipo: Psychic",
+    tipo: "Psychic",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/064.png",
     descricao:
       "Using its psychic power, Kadabra levitates as it sleeps. It uses its springy tail as a pillow.",
@@ -34,7 +34,7 @@ const pokedex = [
   {
     id: 65,
     nome: "Alakazam",
-    tipo: "Tipo: Psychic",
+    tipo: "Psychic",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/065.png",
     descricao:
       "It has an incredibly high level of intelligence. Some say that Alakazam remembers everything that ever happens to it, from birth till death.",
@@ -45,16 +45,34 @@ const pokedex = [
   },
 ];
 
+let pokemon = undefined;
+
 // Rotas
 app.get("/", (req, res) => {
-  res.render("index", { pokedex });
+  res.render("index", { pokedex, pokemon });
 });
 
-app.post("/add", (req, res) => {
+app.post("/create", (req, res) => {
   const pokemon = req.body;
-  
+  pokemon.id = pokedex.length + 1;
   pokedex.push(pokemon);
+  res.redirect("/");
+});
 
+app.get("/detalhes/:id", (req, res) => {
+  const id = +req.params.id;
+  pokemon = pokedex.find((pokemon) => pokemon.id === id);
+  res.redirect("/");
+});
+
+app.post("/update/:id", (req, res) => {
+  const id = +req.params.id - 1;
+  const newPokemon = req.body;
+
+  newPokemon.id = id + 1;
+  pokedex[id] = newPokemon;
+
+  pokemon = undefined;
   res.redirect("/");
 });
 
