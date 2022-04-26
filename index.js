@@ -2,13 +2,14 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
+
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded());
 
 const pokedex = [
   {
-    id: 63,
+    id: 1,
     nome: "Abra",
     tipo: "Psychic",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/063.png",
@@ -20,7 +21,7 @@ const pokedex = [
     habilidade: "Inner focus, Synchronize",
   },
   {
-    id: 64,
+    id: 2,
     nome: "Kadabra",
     tipo: "Psychic",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/064.png",
@@ -32,7 +33,7 @@ const pokedex = [
     habilidade: "Inner focus, Synchronize",
   },
   {
-    id: 65,
+    id: 3,
     nome: "Alakazam",
     tipo: "Psychic",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/065.png",
@@ -56,25 +57,33 @@ app.post("/create", (req, res) => {
   const pokemon = req.body;
   pokemon.id = pokedex.length + 1;
   pokedex.push(pokemon);
-  res.redirect("/");
+  res.redirect("/#cards");
 });
 
 app.get("/detalhes/:id", (req, res) => {
   const id = +req.params.id;
   pokemon = pokedex.find((pokemon) => pokemon.id === id);
-  res.redirect("/");
+  res.redirect("/#cadastro");
 });
 
 app.post("/update/:id", (req, res) => {
   const id = +req.params.id - 1;
   const newPokemon = req.body;
 
-  newPokemon.id = id + 1;
+  newPokemon.id = id + 1
   pokedex[id] = newPokemon;
 
   pokemon = undefined;
-  res.redirect("/");
+  res.redirect("/#cards");
 });
+
+app.get("/delete/:id", (req, res) =>{
+  const id = +req.params.id - 1;
+
+  delete pokedex[id]
+  res.redirect("/#cards");
+})
+
 
 app.listen(3000, () =>
   console.log("Servidor rodando em http://localhost:3000")
