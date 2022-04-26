@@ -11,7 +11,7 @@
 
 header{
     padding: 3rem;
-    background-color: red;
+    background-color: rgb(74, 0, 0);
     
 }
 
@@ -24,16 +24,19 @@ main{
     margin: 0 10rem 0 10rem;
 }
 
-section#cards{
+section#cards {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     margin-top: 5rem;
+    
 }
 
 section#cards div.card{
     width: 20rem;
     box-shadow: 5px 5px 5px 5px #00000020;
     padding: 1rem;
+    margin-top: 3rem;
 }
 
 section#cards div.card img{
@@ -46,4 +49,55 @@ section#cards div.card h2{
 
 section#cards div.card p.descricao {
     margin-bottom: 1rem;
+}
+
+section#cadastro{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 5rem;
+}
+
+section#cadastro h2{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+section#cadastro form{
+    width:50;
+}
+
+section#cadastro form input{
+    width: 100%;
+    padding: .7rem;
+    font-family: 1rem;
+    outline: none;
+    border: solid 2px rgb(0, 0, 0);
+    margin: 0rem 1rem 1rem 1rem;
+}
+
+section#cadastro form label{
+    margin: 1rem;
+    color: rgb(0, 0, 0);
+}
+
+section#cadastro form button{
+    padding: .8rem;
+    width: 20%; 
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1rem;
+    background-color: #fff; 
+    border: solid 1px rgb(74, 0, 0);
+    color:rgb(74, 0, 0);
+    cursor: pointer;
+    transition:all .3s ease-in-out;  
+}
+
+section#cadastro form button:hover{
+    background-color: rgb(74, 0, 0) ;
+    color:#fff;
+
 }
