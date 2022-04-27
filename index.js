@@ -58,12 +58,14 @@ app.post("/create", (req, res) => {
   pokemon.id = pokedex.length + 1;
   pokedex.push(pokemon);
   res.redirect("/#cards");
+  
 });
 
 app.get("/detalhes/:id", (req, res) => {
   const id = +req.params.id;
   pokemon = pokedex.find((pokemon) => pokemon.id === id);
   res.redirect("/#cadastro");
+
 });
 
 app.post("/update/:id", (req, res) => {

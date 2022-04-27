@@ -36,9 +36,9 @@
           <% if (pokemon == undefined) {%>
             <h2>Cadastre um novo Pokemon!</h2>
     
-            <form action="/update" method="get">
+            <form action="/create" method="post">
               <label for="nome">Nome:</label>
-              <input type="text" id="nome" name="nome" />
+              <input type="text" id="nome" name="nome" required />
     
               <label for="tipo">Tipo:</label>
               <input type="text" id="tipo" name="tipo" />
