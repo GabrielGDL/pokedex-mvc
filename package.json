@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Projeto MVC de uma pokedex",
   "main": "index.js",
-  
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
@@ -19,6 +18,7 @@
   },
   "homepage": "https://github.com/GabrielGDL/pokedex-mvc#readme",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "ejs": "^3.1.7",
     "express": "^4.17.3",
     "nodemon": "^2.0.15"
